@@ -8,6 +8,6 @@
   *
   *
 * JS for Portfolio 
-* C# for ??
-* Java for ??
+* C# for api development using dotnet core
+* Java for api testing
 * 
