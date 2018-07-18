@@ -3,11 +3,8 @@
 ### System Design
 
 * Python with/for ML
-* AWS
-  *
-  *
-  *
-* JS for Portfolio 
+* AWS for complete serverless application using s3/lambda/dynamodb/apigateway
+* JS for Portfolio / React 
 * C# for api development using dotnet core
-* Java for api testing
-* 
+* Java for algorithms/spring MVC 
+* Postgres/mongo for database 
