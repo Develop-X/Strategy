@@ -1,5 +1,5 @@
 ## Priority
-Go to Priority page [Page]()
+Go to Priority page on what's important [Page](https://github.com/Develop-X/Strategy/tree/master/PortfolioWall)
 
 
 
