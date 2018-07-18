@@ -6,4 +6,5 @@ Some of the Bests
 5. puppeteer.slack.com
 
 Entire Master Repo:
-https://www.inc.com/ben-parr/97-best-slack-communities-for-entrepreneurs.html
+https://slacklist.info/
+
