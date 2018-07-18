@@ -1,3 +1,8 @@
+## Priority
+Go to Priority page [Page]()
+
+
+
 # Strategy
 This would be a placeholder for brain-dumps of ideas to work on
 
