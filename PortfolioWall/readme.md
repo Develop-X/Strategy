@@ -1,7 +1,9 @@
 # Prioritized list of features 
 
 ### System Design
+* Architecure - 
 
+### Projects and Solutions
 * Python with/for ML
   * Predicting House Prices in Melbourne
 * AWS for complete serverless application using s3/lambda/dynamodb/apigateway
