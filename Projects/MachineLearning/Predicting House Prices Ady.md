@@ -2,7 +2,7 @@
 ### Problem Statement
 * https://www.kaggle.com/hanpengliu/my-first-machine-learning-model/
 
-####### Alternate Problem
+#### Alternate Problem
 * https://www.dataquest.io/blog/machine-learning-tutorial/
 
 ### Architecture
