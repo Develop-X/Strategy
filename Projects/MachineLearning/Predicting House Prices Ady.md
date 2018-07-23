@@ -19,6 +19,8 @@ We are going to break everything into logical steps that allow us to ensure the 
 * Python 3.x
 * Jupyter
 
+- Download anaconda for spyder https://www.anaconda.com/download/#windows
+
 ### Techniques
 * regression model -  logistic regression?
 * Algos - Gradient Boosting? Lasso Regression?
