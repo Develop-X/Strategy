@@ -20,7 +20,9 @@ We are going to break everything into logical steps that allow us to ensure the 
 * Anaconda - https://www.anaconda.com/download/#windows
 * Jupyter
 * Spyder - https://github.com/spyder-ide/spyder
+(SPyDER derives from "Scientific Python Development EnviRonment")
 
+http://www.southampton.ac.uk/~fangohr/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html
 - Download anaconda for spyder https://www.anaconda.com/download/#windows
 
 ### Techniques
