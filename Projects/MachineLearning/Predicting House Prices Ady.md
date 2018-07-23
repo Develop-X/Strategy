@@ -17,7 +17,9 @@ We are going to break everything into logical steps that allow us to ensure the 
 
 ### Tools
 * Python 3.x
+* Anaconda - https://www.anaconda.com/download/#windows
 * Jupyter
+* Spyder - https://github.com/spyder-ide/spyder
 
 - Download anaconda for spyder https://www.anaconda.com/download/#windows
 
