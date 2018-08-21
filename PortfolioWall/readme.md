@@ -15,6 +15,7 @@
   * Get started with Reactjs
   * Small react application from scratch till deployment
   * Personal portfolios
+  * WebSocket programming Socket IO
 * C# for api development using dotnet core
 * Java for algorithms/spring MVC 
   * Java shorting/search/ big o notation
