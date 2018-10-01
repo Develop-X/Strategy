@@ -6,6 +6,3 @@
 
 ### API Testing
 * Restassured [ref](http://rest-assured.io/)
-### Performance 
-* Taurus [ref](https://gettaurus.org/)
-* Gatling [ref](http://gatling.io)
