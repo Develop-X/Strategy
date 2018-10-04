@@ -150,3 +150,18 @@ Inside the virtual environment you can now run the unit-tests in the ‘test_gen
 ```
 (venv) [cicd-buzz] $ python -m pytest -v tests/test_generator.py
 ```
+The output should look something like:
+``` python
+============================= test session starts =============================
+platform win32 -- Python 3.7.0, pytest-3.0.6, py-1.6.0, pluggy-0.4.0 -- C:\Learn\cicd-buzz\venv\Scripts\python.exe
+cachedir: .cache
+rootdir: C:\Learn\cicd-buzz, inifile:
+collected 3 items
+
+tests/test_generator.py::test_sample_single_word PASSED
+tests/test_generator.py::test_sample_multiple_words PASSED
+tests/test_generator.py::test_generate_buzz_of_at_least_five_words PASSED
+
+========================== 3 passed in 0.08 seconds ===========================
+```
+
