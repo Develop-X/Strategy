@@ -204,3 +204,8 @@ Add the file to Git, then commit and Push your changes:
 [cicd-buzz] $ git commit -m "Add Travis CI configuration"
 [cicd-buzz] $ git push
 ```
+
+Go to the Travis CI dashboard. After a short amount of time Travis should notice your code changes and start the build/test process. The output log shows the execution of the unit-tests: https://travis-ci.org/Develop-X/cicd-buzz
+
+![](https://cdn-images-1.medium.com/max/800/1*VzPJaJ33Jz6l9WvrhBgu7g.png)
+
