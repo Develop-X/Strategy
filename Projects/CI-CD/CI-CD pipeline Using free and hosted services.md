@@ -19,17 +19,40 @@ A way to ship code in small increments and iterations is by using a Continuous I
 
 The goal of this tutorial is to show you the essential building blocks of a modern software development pipeline, and how to assemble those blocks. It’s not about any programming language or software development methodology in particular. Maybe some of the building building blocks do not match your technology stack of choice. Even if that’s the case I still advice you to go through all the steps. Once you have a basic understanding of the complete end-to-end pipeline you can make it easily fit your specific needs.
 
-Full disclosure: I’m one of the developers on the Better Code Hub team.
-
 Update August 2017: Eran Barlev from codefresh.io published a short video on LinkedIn demonstrating how Codefresh can replace some of the building blocks described in this tutorial. Since no two software products are the same, development pipelines can vary too. Be sure to check out Eran’s video to see an alternative implementation of a modern CI/CD pipeline.
 
-Step 1: Write a little buzz generator
+### Step 1: Write a little buzz generator
 We need a small piece of software that will travel through all phases of the pipeline, from your laptop to the cloud. In our case this piece of software is a little CI/CD buzz generator program written in Python.
 
 Create a new directory (let’s say we call it ‘cicd-buzz’). Inside this directory create another directory called ‘buzz’ and in this directory save the snippet below to a file called ‘generator.py’.
 
+```python
+from __future__ import print_function
+import random
 
-generator.py
+buzz = ('continuous testing', 'continuous integration',
+    'continuous deployment', 'continuous improvement', 'devops')
+adjectives = ('complete', 'modern', 'self-service', 'integrated', 'end-to-end')
+adverbs = ('remarkably', 'enormously', 'substantially', 'significantly',
+    'seriously')
+verbs = ('accelerates', 'improves', 'enhances', 'revamps', 'boosts')
+
+def sample(l, n = 1):
+    result = random.sample(l, n)
+    if n == 1:
+        return result[0]
+    return result
+
+def generate_buzz():
+    buzz_terms = sample(buzz, 2)
+    phrase = ' '.join([sample(adjectives), buzz_terms[0], sample(adverbs),
+        sample(verbs), buzz_terms[1]])
+    return phrase.title()
+
+if __name__ == "__main__":
+    print(generate_buzz())
+```    
+    
 Also create a new empty file called ‘__init__.py’ in the same directory. Your project structure should look like this now:
 
 cicd-buzz/
