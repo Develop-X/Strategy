@@ -184,3 +184,23 @@ This will prevent git from adding the virtualenv to our repo. Now it’s time to
 ```
 If the last command above complains about access rights, make sure you’ve added your SSH key to your GitHub account.
 
+
+### Step 4: Connect Travis CI to run the tests on every commit
+
+Travis CI is a hosted service for Continuous Integration work. It’s free for public GitHub repositories and getting a Travis CI account is just a matter of visiting https://travis-ci.org and logging in with your GitHub credentials.
+
+Enabling Travis CI to start a build at each Push and Pull Request for your repository is as easy as flipping the switch in front of your GitHub cicd-buzz repository (click the ‘Sync account’ button in case your repository is not yet visible) 
+
+The last step in activating Travis CI is to add a ‘.travis.yml’ file in the root of your project directory. For our buzz generator this file should contain:
+
+```
+language: python
+script:
+  - python -m pytest -v
+ ```
+Add the file to Git, then commit and Push your changes:
+```
+[cicd-buzz] $ git add .travis.yml
+[cicd-buzz] $ git commit -m "Add Travis CI configuration"
+[cicd-buzz] $ git push
+```
