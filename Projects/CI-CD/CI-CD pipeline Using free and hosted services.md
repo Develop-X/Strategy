@@ -109,22 +109,37 @@ def test_generate_buzz_of_at_least_five_words():
  
 To run the tests we’ll be using the ‘pytest’ framework. To install pytest we’ll be using a Python Virtual Environment (‘virtualenv’). Don’t worry, that’s easier done than said. First, make sure you have virtualenv installed so you can execute the following command inside your project directory:
 
+```
 [cicd-buzz] $ virtualenv venv
+```
+
 This should create a new directory venv. To start using this environment type:
 
+```
 [cicd-buzz] $ source venv/bin/activate
 (venv) [cicd-buzz] $
+```
+
 Next, create a new file called ‘requirements.txt’ that lists the pytest dependency:
 
+```
 pytest==3.0.6
+```
+
 To download dependencies listed in the requirements file you’ll need to execute the ‘pip’ command:
 
+```
 (venv) [cicd-buzz] $ pip install -r requirements.txt
+```
+
 After you’ve completed all steps above, the root of your project directory should look like this:
 
+```
 cicd-buzz/
   buzz/
   requirements.txt
   tests/
   venv/
+```
+
 Inside the virtual environment you can now run the unit-tests in the ‘test_generator.py’ file:
