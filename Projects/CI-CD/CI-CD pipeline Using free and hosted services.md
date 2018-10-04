@@ -147,3 +147,6 @@ cicd-buzz/
 ```
 
 Inside the virtual environment you can now run the unit-tests in the ‘test_generator.py’ file:
+```
+(venv) [cicd-buzz] $ python -m pytest -v tests/test_generator.py
+```
