@@ -55,25 +55,58 @@ if __name__ == "__main__":
     
 Also create a new empty file called ‘__init__.py’ in the same directory. Your project structure should look like this now:
 
+```
 cicd-buzz/
   buzz/
     __init__.py
     generator.py
+```
+
 You should be able to run this Python script from the command line inside the ‘buzz’ directory:
 
+```
 [cicd-buzz/buzz] $ python generator.py
 End-To-End Devops Enormously Boosts Continuous Testing
+```
+
 Try it a couple of times, it’s fun:
 
+```
 [cicd-buzz/buzz] $ python generator.py
 Complete Continuous Improvement Enormously Improves Devops
 [cicd-buzz/buzz] $ python generator.py
 Modern Devops Remarkably Improves Continuous Testing
-Step 2: Add automated tests
+```
+
+### Step 2: Add automated tests
+
 Continuous delivery pipelines only makes sense when you have a significant amount of automated tests that prevents you from continuously shipping broken software. To get a proper set of unit-tests for our buzz generator create a new directory called ‘tests’ in the root of your project directory and save the the snippet below to a new file in the ‘tests’ directory. Call this file ‘test_generator.py’:
 
+```python
 
-test_generator.py
+import unittest
+
+from buzz import generator
+
+def test_sample_single_word():
+    l = ('foo', 'bar', 'foobar')
+    word = generator.sample(l)
+    assert word in l
+
+def test_sample_multiple_words():
+    l = ('foo', 'bar', 'foobar')
+    words = generator.sample(l, 2)
+    assert len(words) == 2
+    assert words[0] in l
+    assert words[1] in l
+    assert words[0] is not words[1]
+
+def test_generate_buzz_of_at_least_five_words():
+    phrase = generator.generate_buzz()
+    assert len(phrase.split()) >= 5
+    
+```
+ 
 To run the tests we’ll be using the ‘pytest’ framework. To install pytest we’ll be using a Python Virtual Environment (‘virtualenv’). Don’t worry, that’s easier done than said. First, make sure you have virtualenv installed so you can execute the following command inside your project directory:
 
 [cicd-buzz] $ virtualenv venv
