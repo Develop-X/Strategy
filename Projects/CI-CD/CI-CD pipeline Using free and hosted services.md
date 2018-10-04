@@ -165,3 +165,22 @@ tests/test_generator.py::test_generate_buzz_of_at_least_five_words PASSED
 ========================== 3 passed in 0.08 seconds ===========================
 ```
 
+### Step 3: Put the code on GitHub
+
+Login to GitHub (get an account first if you don’t have one already) and create a new public repository called ‘cicd-buzz’.
+
+Inside your project directory create a new file called ‘.gitignore’ containing only a single line:
+```
+venv
+```
+
+This will prevent git from adding the virtualenv to our repo. Now it’s time to initialize Git locally and push your code to GitHub:
+```
+[cicd-buzz] $ git init
+[cicd-buzz] $ git add *
+[cicd-buzz] $ git commit -m "Initial commit"
+[cicd-buzz] $ git remote add origin git@github.com:<YOUR_GITHUB_USERNAME>/cicd-buzz.git
+[cicd-buzz] $ git push -u origin master
+```
+If the last command above complains about access rights, make sure you’ve added your SSH key to your GitHub account.
+
