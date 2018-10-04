@@ -114,10 +114,14 @@ To run the tests we’ll be using the ‘pytest’ framework. To install pytest 
 ```
 
 This should create a new directory venv. To start using this environment type:
-
+This does not work on windows
 ```
 [cicd-buzz] $ source venv/bin/activate
 (venv) [cicd-buzz] $
+```
+Navigate to Scripts folder in venv and run the activate bat script
+```
+C:\Learn\cicd-buzz\venv\Scripts>activate
 ```
 
 Next, create a new file called ‘requirements.txt’ that lists the pytest dependency:
