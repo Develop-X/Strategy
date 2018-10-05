@@ -220,4 +220,3 @@ After logging in with your GitHub credentials, the next page lists all your GitH
 
 If you want Better Code Hub to run for every Push and Pull Request on your repo (just like Travis CI), toggle the pull-request icon that is displayed on the bottom-left part of the repo card:
 
-![](https://cdn-images-1.medium.com/max/1000/1*T58HrUXb_d1Gh2caWwbg_g.png)
