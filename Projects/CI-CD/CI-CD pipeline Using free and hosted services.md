@@ -209,3 +209,10 @@ Go to the Travis CI dashboard. After a short amount of time Travis should notice
 
 ![](https://cdn-images-1.medium.com/max/800/1*VzPJaJ33Jz6l9WvrhBgu7g.png)
 
+### Step 5: Add Better Code Hub to your pipeline
+Now that we have a well oiled pipeline that continuously checks the functionality of our code with automated tests, the temptation is strong to focus on functionality and forget about quality. Better Code Hub is a hosted platform that checks the quality of your code according to the 10 guidelines for maintainable, future proof code. Better Code Hub is a watchdog that continuously monitors our development work (literally every push to GitHub) and notifies you when the quality is at risk.
+
+Better Code Hub is, like Travis CI, a service that seamlessly integrates with GitHub. To attach it to our repo, go to https://bettercodehub.com and choose the login button that says Free.
+
+After logging in with your GitHub credentials, the next page lists all your GitHub repositories. Find the repository called ‘cicd-buzz’ and press the play button. Better Code Hub will then ask you if it’s fine to run the analysis with the default configuration. Click ‘Go’ and wait a few seconds, the analysis report should now be on your screen.
+
