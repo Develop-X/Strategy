@@ -216,3 +216,4 @@ Better Code Hub is, like Travis CI, a service that seamlessly integrates with Gi
 
 After logging in with your GitHub credentials, the next page lists all your GitHub repositories. Find the repository called ‘cicd-buzz’ and press the play button. Better Code Hub will then ask you if it’s fine to run the analysis with the default configuration. Click ‘Go’ and wait a few seconds, the analysis report should now be on your screen.
 
+![](https://cdn-images-1.medium.com/max/1000/1*_28d4LQ-OO7zMgkrM2vaig.png)
