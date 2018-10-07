@@ -220,4 +220,41 @@ If you want Better Code Hub to run for every Push and Pull Request on your repo 
 
 ![](https://user-images.githubusercontent.com/8856857/46511557-a000fd80-c892-11e8-942d-b8fa95863f1c.png)
 
+### Step 6: Turn the buzz generator into a simple web app
+
+Nice job! You already have a continuous integration pipeline that checks for functionality and quality at this point. Next step is to continuously deploy your software whenever all tests pass.
+
+Since we will deploy the software to Heroku as a web app, we first need to write a little Python Flask wrapper around our buzz generator to make the program respond to HTTP requests and output HTML. Add the code below in a file called ‘app.py’ in the root of your project directory:
+
+```python
+import os
+import signal
+from flask import Flask
+from buzz import generator
+
+app = Flask(__name__)
+
+signal.signal(signal.SIGINT, lambda s, f: os._exit(0))
+
+@app.route("/")
+def generate_buzz():
+    page = '<html><body><h1>'
+    page += generator.generate_buzz()
+    page += '</h1></body></html>'
+    return page
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
+
+```
+Also add another line to your ‘requirements.txt’ file for the Flask framework:
+```
+pytest==3.0.6
+Flask==0.12
+```
+And install the new dependency:
+```
+(venv) [cicd-buzz] $ pip install -r requirements.txt
+```
+
 
