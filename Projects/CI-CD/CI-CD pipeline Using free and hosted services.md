@@ -303,4 +303,21 @@ Again, don’t forget to add your commit and push your changes:
 [cicd-buzz] $ git commit -m "Step 7"
 [cicd-buzz] $ git push
 ```
+### Step 8: Deploy to Docker Hub
+
+Deploying your containers to a central Docker image registry, such as Docker Hub makes it much easier to share your containers in different environments or to go back to a previous version. To complete this step you’ll need to sign up at https://docker.com and add the following to a file called ‘deploy_dockerhub.sh’ in a new directory called ‘.travis’ in your project directory:
+
+``` python
+#!/bin/sh
+docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+if [ "$TRAVIS_BRANCH" = "master" ]; then
+    TAG="latest"
+else
+    TAG="$TRAVIS_BRANCH"
+fi
+docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
+docker push $TRAVIS_REPO_SLUG
 ```
+The script above will be called by Travis CI at the end of each pipeline build and will create a new deployable Docker image for that pipeline build. The script requires 3 environment variables that you can set under the ‘settings’ view of your cicd-buzz repo at Travis CI
+
+To have Travis CI deploy you Docker image to Docker Hub for each code push to your GitHub repository, modify your ‘.travis.yml’ file so that it looks like:
