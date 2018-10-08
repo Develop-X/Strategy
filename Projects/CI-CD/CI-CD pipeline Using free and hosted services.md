@@ -344,3 +344,54 @@ After committing and pushing these changes (and waiting for Travis CI to complet
 ```
 [cicd-buzz] $ docker run -p5000:5000 --rm -it <YOUR_DOCKER_USERNAME>/cicd-buzz:latest
 ```
+### Step 9: Deploy to Heroku
+Heroku is a cloud platform for hosting small and scalable web applications. It offers a free plan so go to https://signup.heroku.com and sign up if you haven’t already done so.
+
+Install the Heroku command-line toolbelt and from the root of your project directory execute the following commands:
+
+```
+[cicd-buzz] $ heroku login
+[cicd-buzz] $ heroku create
+Creating app… done, ⬢ fathomless-inlet-53225
+https://fathomless-inlet-53225.herokuapp.com/ | https://git.heroku.com/fathomless-inlet-53225.git
+[cicd-buzz] $ heroku plugins:install heroku-container-registry
+[cicd-buzz] $ heroku container:login
+[cicd-buzz] $ heroku container:push web
+[cicd-buzz] $ heroku ps:scale web=1
+```
+
+After these commands you should be able to access the app at the url reported by the heroku create command.
+
+Note that the heroku container:push web command, pushes the same container to the Heroku platform as you’ve pushed to the Docker Hub registry.
+
+To automate the process of deploying each build of the master branch of our project, add the following to a file called ‘deploy_heroku.sh’ in the directory ‘.travis’:
+
+```
+#!/bin/sh
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+heroku plugins:install heroku-container-registry
+docker login -e _ -u _ --password=$HEROKU_API_KEY registry.heroku.com
+heroku container:push web --app $HEROKU_APP_NAME
+```
+
+Also, add the following line to your ‘.travis.yml’ file:
+```
+after_success:
+  - sh .travis/deploy_dockerhub.sh
+  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy_heroku.sh
+```
+
+And finally add 2 more environment variables to your repo at Travis CI. You can find the Heroku API key under your Heroku ‘Account Settings’. The Heroku App name is the name reported by the heroku create command.
+
+Commit and push these changes to GitHub. A new Docker image should now be pushed to both Docker Hub and Heroku after the build succeeds.
+
+### Step 10: CI/CD FTW!
+
+Now that we have a modern development pipeline up and running, the fun of shipping functionality in short iterations and small increments starts. Let’s say we want to make the landing a bit more attractive. A typical workflow to do that looks like:
+
+1. Start by creating a new issue for the feature: https://github.com/robvanderleek/cicd-buzz/issues/1
+2. Create a Git feature-branch for this ticket: https://github.com/robvanderleek/cicd-buzz/tree/issue-1
+3. *Coding magic happens here*
+4. Keep an eye on the feedback from Travis CI and Better Code Hub: https://github.com/robvanderleek/cicd-buzz/commits/issue-1
+5. Check a running instance of your app by locally running the latest Docker image:docker run --rm -p5000:5000 -it robvanderleek/cicd-buzz:issue-1 You can also share this container with others.
+6. If you’re satisfied with the new feature, open a Pull Request and your code is ready to be shipped by the CI/CD pipeline to production: https://github.com/robvanderleek/cicd-buzz/pull/2
