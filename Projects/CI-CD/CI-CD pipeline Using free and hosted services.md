@@ -318,6 +318,29 @@ fi
 docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
 docker push $TRAVIS_REPO_SLUG
 ```
-The script above will be called by Travis CI at the end of each pipeline build and will create a new deployable Docker image for that pipeline build. The script requires 3 environment variables that you can set under the ‘settings’ view of your cicd-buzz repo at Travis CI
+The script above will be called by Travis CI at the end of each pipeline build and will create a new deployable Docker image for that pipeline build. The script requires 3 environment variables that you can set under the ‘settings’ view of your cicd-buzz repo at Travis CI:
+
+![](https://user-images.githubusercontent.com/8856857/46588845-2a916900-caee-11e8-9390-db214a0fadbb.png)
 
 To have Travis CI deploy you Docker image to Docker Hub for each code push to your GitHub repository, modify your ‘.travis.yml’ file so that it looks like:
+
+```
+sudo: required
+
+services:
+  - docker
+
+language: python
+
+script:
+  - python -m pytest -v
+
+after_success:
+  - sh .travis/deploy_dockerhub.sh
+  
+```
+
+After committing and pushing these changes (and waiting for Travis CI to complete the full pipeline) you should be able to launch your Docker image straight from Docker Hub:
+```
+[cicd-buzz] $ docker run -p5000:5000 --rm -it <YOUR_DOCKER_USERNAME>/cicd-buzz:latest
+```
