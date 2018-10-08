@@ -256,5 +256,51 @@ And install the new dependency:
 ```
 (venv) [cicd-buzz] $ pip install -r requirements.txt
 ```
+You can now run the web app on your laptop:
+```
+[cicd-buzz] $ python app.py
+```
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+Open the location http://localhost:5000 in a browser and admire your achievement. Hit refresh a couple of times, just for fun.
 
+Finally, don’t forget to add your commit and push your changes:
+```
+[cicd-buzz] $ git add app.py
+[cicd-buzz] $ git add requirements.txt
+[cicd-buzz] $ git commit -m "Step 6"
+[cicd-buzz] $ git push
+```
+And enjoy watching Travis CI and Better Code Hub picking up this push!
 
+### Step 7: Containerize your web app with docker
+
+We’ll use Docker to create a single self-contained, deployable unit of our web app. For a simple Python Flask app this may look like a lot of overhead but deploying different versions of your code base as a small, self-contained unit has a lot of benefits when your system grows over time.
+
+Assuming you have Docker up and running, add the following to a new file called ‘Dockerfile’ in the root of your project directory:
+
+``` python
+FROM alpine:3.5
+RUN apk add --update python py-pip
+COPY requirements.txt /src/requirements.txt
+RUN pip install -r /src/requirements.txt
+COPY app.py /src
+COPY buzz /src/buzz
+CMD python /src/app.py
+```
+
+The above tells docker to pick the alpine base image, install Python and pip, and also install our web app. The last line tells docker to launch the web app whenever the container is launched.
+
+You should be able to build an image of this Docker configuration and launch it (depending on your OS configuration you might need to put sudo in front of the commands below):
+
+```
+[cicd-buzz] $ docker build -t cicd-buzz .
+[cicd-buzz] $ docker run -p 5000:5000 --rm -it cicd-buzz
+```
+
+Again, don’t forget to add your commit and push your changes:
+```
+[cicd-buzz] $ git add Dockerfile
+[cicd-buzz] $ git commit -m "Step 7"
+[cicd-buzz] $ git push
+```
+```
