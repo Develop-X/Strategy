@@ -1,4 +1,5 @@
 ### Dashboard Monitering
 * Kibana with logstash
 * Grafana
-* Splunk lite
+* Splunk lite  
+* Dashbird
